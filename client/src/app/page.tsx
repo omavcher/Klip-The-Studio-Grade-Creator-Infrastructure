@@ -1,65 +1,75 @@
-import Image from "next/image";
+"use client";
+import Navbar from "@/components/Navbar";
+import BentoFeatures from "@/components/BentoFeatures";
+import { motion } from "framer-motion";
+import { Play } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    // Added overflow-x-hidden to prevent any horizontal scrolling
+    <div className="bg-[#050505] min-h-screen text-white overflow-x-hidden selection:bg-blue-500/30">
+      
+      {/* Background Decor */}
+      <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      
+      <Navbar />
+
+      <section className="relative pt-32 md:pt-28 pb-20 px-4 z-10 container mx-auto">
+        <div className="max-w-7xl mx-auto text-center">
+          
+          {/* Badge */}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold text-blue-400 tracking-widest uppercase mb-8 md:mb-12"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Klip Studio v1.0
+          </motion.div>
+
+          {/* FLUID TYPOGRAPHY HERO */}
+          {/* text-[clamp(min, preferred, max)] scales text based on screen width */}
+          <motion.h1 
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="text-[clamp(2.5rem,10vw,8rem)] font-[1000] tracking-tighter leading-[0.8] mb-8 md:mb-12 uppercase"
+>
+  ZERO LAG. <br />
+  <span className="text-transparent bg-clip-text bg-gradient-to-b from-zinc-200 to-zinc-600">
+    TOTAL CLARITY.
+  </span>
+</motion.h1>
+
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            className="text-zinc-400 text-base md:text-2xl max-w-2xl mx-auto mb-10 md:mb-14 px-4"
           >
-            Documentation
-          </a>
+            The video engine built for <span className="text-white">Elite Creators</span>. 
+            Local 4K capture. AI editing. Zero lag.
+          </motion.p>
+
+          {/* Responsive Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8">
+            <button className="w-full sm:w-auto bg-white text-black px-8 md:px-12 py-4 md:py-6 rounded-full font-black text-lg md:text-2xl hover:bg-blue-600 hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-[0_0_50px_rgba(255,255,255,0.1)]">
+              Start Building
+            </button>
+            <button className="flex items-center gap-3 text-zinc-400 hover:text-white font-bold text-lg md:text-xl group">
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white/5 transition-colors">
+                <Play size={18} className="md:w-6 md:h-6" fill="currentColor" />
+              </div>
+              See the Magic
+            </button>
+          </div>
         </div>
-      </main>
+      </section>
+
+      {/* Bento Grid */}
+      <BentoFeatures />
     </div>
   );
 }
